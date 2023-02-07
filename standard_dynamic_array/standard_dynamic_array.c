@@ -376,7 +376,7 @@ DynamicArrayFunctionStatues Push_Back_Into_A_Dynamic_Array(
 		exit(DynamicArray_Invalid_Input);
 	}
 	if (dyarr->current_size == dyarr->total_usable_size)
-		Resize_The_Dynamic_Array(dyarr, 2 * (dyarr->total_usable_size));
+		Resize_The_Dynamic_Array(dyarr, 1.3 * (dyarr->total_usable_size));
 	void* Afteradd_piece = realloc(dyarr->DataPiece, (dyarr->current_size + 1)*dyarr->Single_Data_size);
 	if (!Afteradd_piece)
 	{
@@ -557,6 +557,58 @@ DynamicArrayFunctionStatues Insert_Into_A_Dynamic_Array(
 	dyarr->current_size++;
 	return DynamicArray_Normal;
 }
+
+//About Dynamic Array
+//Insert back a lot of data that has a organization that has all the same data
+//Use like this: 																		
+//insert_back_Same_data_Into_A_Dynamic_Array(dyarr,n_repeat,datasize,pos)
+//
+DynamicArrayFunctionStatues insert_back_Same_data_Into_A_Dynamic_Array(
+	DynamicArray*										dyarr,
+	void*												data,
+	size_t												n_repeat,
+	size_t												datasize,
+	size_t												pos
+)
+{
+	if (!dyarr && !data)
+	{
+		SHOW_ERROR_DynamicArray_NULL_INPUT;
+		exit(DynamicArray_NULL_INPUT);
+	}
+	if (datasize != dyarr->Single_Data_size)
+	{
+		SHOW_ERROR_DynamicArray_Invalid_Input;
+		exit(DynamicArray_Invalid_Input);
+	}
+	if (dyarr->current_size == dyarr->total_usable_size)
+		Resize_The_Dynamic_Array(dyarr, 2 * dyarr->total_usable_size);
+	int datarate = datasize / dyarr->total_usable_size;
+	if (datarate > 0)
+		Resize_The_Dynamic_Array(dyarr, (datarate + 1) * dyarr->total_usable_size);
+	void* newspace = realloc(dyarr->DataPiece, (dyarr->current_size + n_repeat) * dyarr->Single_Data_size);
+	if (!newspace)
+	{
+		SHOW_ERROR_DynamicArray_ERROR_IN_MALLOCING_SPACE;
+		exit(DynamicArray_ERROR_IN_MALLOCING_SPACE);
+	}
+	memmove(
+		(char*)dyarr->DataPiece + (pos + n_repeat) * dyarr->Single_Data_size,
+		(char*)dyarr->DataPiece + pos * dyarr->Single_Data_size,
+		dyarr->Single_Data_size * n_repeat
+	);
+	for (int i = 0; i < n_repeat; i++)
+		memcpy(
+			(char*)newspace + (pos + i) * dyarr->Single_Data_size,
+			data,
+			dyarr->Single_Data_size
+		);
+	dyarr->DataPiece = newspace;
+	dyarr->current_size += n_repeat;
+	return DynamicArray_Normal;
+}
+
+
 
 //About Dynamic Array
 //Insert back some data that organized in static array
