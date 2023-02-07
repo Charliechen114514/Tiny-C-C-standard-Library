@@ -180,7 +180,10 @@ Position_Stored_Dynamic_ArrayFordyarr* Init_A_Postion_Stored_Dynamic_ArrayFordya
 //this function is aimed to output a series of locations that is stored in the pos
 ////Use PSDA_dyarr_OPEN to have a better shown ,else use PSDA_dyarr_CLOSE
 //
-DynamicArrayFunctionStatues Show_All_Locations_In_PSDAfor_dyarr(Position_Stored_Dynamic_ArrayFordyarr* posarr,BetterPrintfor_PosDyarr Whether_Better_Print)
+DynamicArrayFunctionStatues Show_All_Locations_In_PSDAfor_dyarr(
+	Position_Stored_Dynamic_ArrayFordyarr*				posarr,
+	BetterPrintfor_PosDyarr								Whether_Better_Print
+)
 {
 	if (!posarr)
 	{
@@ -199,7 +202,10 @@ DynamicArrayFunctionStatues Show_All_Locations_In_PSDAfor_dyarr(Position_Stored_
 //About Positions_Stored_Dynamic_Array
 //this function is aimed to push back a position into the Position_Stored_Dynamic_ArrayFordyarr
 //
-DynamicArrayFunctionStatues Push_back_a_locations_in_PSDA_dyarr(Position_Stored_Dynamic_ArrayFordyarr* posarr, int pos_acquired)
+DynamicArrayFunctionStatues Push_back_a_locations_in_PSDA_dyarr(
+	Position_Stored_Dynamic_ArrayFordyarr*				posarr, 
+	int													pos_acquired
+)
 {
 	int* pro_usable_space = (int*)realloc(posarr->posSpace, sizeof(int) * (posarr->pos_size + 1));
 	if (!pro_usable_space)
@@ -217,7 +223,10 @@ DynamicArrayFunctionStatues Push_back_a_locations_in_PSDA_dyarr(Position_Stored_
 //this function is aimed to return the number of locations
 //Use PSDA_dyarr_OPEN to have a better shown ,else use PSDA_dyarr_CLOSE
 //
-size_t Get_pos_size_From_PSDA_for_dyarr(Position_Stored_Dynamic_ArrayFordyarr* posarr, BetterPrintfor_PosDyarr Whether_Shown_Print )
+size_t Get_pos_size_From_PSDA_for_dyarr(
+	Position_Stored_Dynamic_ArrayFordyarr*				posarr,
+	BetterPrintfor_PosDyarr								Whether_Shown_Print 
+)
 {
 	if (!posarr)
 	{
@@ -232,7 +241,9 @@ size_t Get_pos_size_From_PSDA_for_dyarr(Position_Stored_Dynamic_ArrayFordyarr* p
 //About Positions_Stored_Dynamic_Array
 //Erase a dynamic Array when donot using it!
 //
-DynamicArrayFunctionStatues DesTroy_A_PSDA_for_dyarr(Position_Stored_Dynamic_ArrayFordyarr* pointer_to_wishedfreeposarr)
+DynamicArrayFunctionStatues DesTroy_A_PSDA_for_dyarr(
+	Position_Stored_Dynamic_ArrayFordyarr*				pointer_to_wishedfreeposarr
+)
 {
 	if (!pointer_to_wishedfreeposarr)
 	{
@@ -252,7 +263,10 @@ DynamicArrayFunctionStatues DesTroy_A_PSDA_for_dyarr(Position_Stored_Dynamic_Arr
 //A Properway to init a default and empty Dynamic Array
 //Use like this: DynamicArray* Dyarr = Init_A_DynamicArray(expected_number, datasize)
 //
-DynamicArray* Init_A_DynamicArray(size_t expected_number,size_t datasize)
+DynamicArray* Init_A_DynamicArray(
+	size_t												expected_number,
+	size_t												datasize
+)
 {
 	DynamicArray* pro_usable_space = MALLOCDYARR(DynamicArray, 1);
 	if(!pro_usable_space)
@@ -274,7 +288,9 @@ DynamicArray* Init_A_DynamicArray(size_t expected_number,size_t datasize)
 //Copied up a Dyarr!
 //Use like this: DynamicArray* copied_one = Init_A_DynamicArray_by_CopyADyarr(be_copied)
 //
-DynamicArray* Init_A_DynamicArray_by_CopyADyarr(DynamicArray* dyarr_copied)
+DynamicArray* Init_A_DynamicArray_by_CopyADyarr(
+	DynamicArray*										dyarr_copied
+)
 {
 	if (!dyarr_copied)
 	{
@@ -309,7 +325,11 @@ DynamicArray* Init_A_DynamicArray_by_CopyADyarr(DynamicArray* dyarr_copied)
 //sizeof(data),
 //how_many_data_are_there_in_the_static_array)
 //
-DynamicArray* Updata_A_Static_Array_To_Dynamic_Array(void* data, size_t datasize, size_t datanum)
+DynamicArray* Updata_A_Static_Array_To_Dynamic_Array(
+	void*												data, 
+	size_t												datasize,
+	size_t												datanum
+)
 {
 	if (!data)
 	{
@@ -340,12 +360,20 @@ DynamicArray* Updata_A_Static_Array_To_Dynamic_Array(void* data, size_t datasize
 //Push back a data into the Dynamic Array
 //Use like this: Push_Back_Into_A_Dynamic_Array(dyarr,data)
 //
-DynamicArrayFunctionStatues Push_Back_Into_A_Dynamic_Array(DynamicArray* dyarr, void* data)
+DynamicArrayFunctionStatues Push_Back_Into_A_Dynamic_Array(
+	DynamicArray*										dyarr, 
+	void*												data
+)
 {
 	if (!dyarr && !data)
 	{
 		SHOW_ERROR_DynamicArray_NULL_INPUT;
 		exit(DynamicArray_NULL_INPUT);
+	}
+	if (sizeof(data) != dyarr->Single_Data_size) 
+	{
+		SHOW_ERROR_DynamicArray_Invalid_Input;
+		exit(DynamicArray_Invalid_Input);
 	}
 	if (dyarr->current_size == dyarr->total_usable_size)
 		Resize_The_Dynamic_Array(dyarr, 2 * (dyarr->total_usable_size));
@@ -366,7 +394,12 @@ DynamicArrayFunctionStatues Push_Back_Into_A_Dynamic_Array(DynamicArray* dyarr, 
 //Use like this: 
 //Push_back_Same_data_Into_A_Dynamic_Array(dyarr,data,the_time_data_repeated,sizeof(data))
 //
-DynamicArrayFunctionStatues Push_back_Same_data_Into_A_Dynamic_Array(DynamicArray* dyarr,void* data,size_t n_repeat,size_t datasize)
+DynamicArrayFunctionStatues Push_back_Same_data_Into_A_Dynamic_Array(
+	DynamicArray*										dyarr,
+	void*												data,
+	size_t												n_repeat,
+	size_t												datasize
+)
 {
 	if (!dyarr && !data)
 	{
@@ -409,7 +442,13 @@ DynamicArrayFunctionStatues Push_back_Same_data_Into_A_Dynamic_Array(DynamicArra
 //how_many_data_are_there_in_static_array,
 //sizeof(data))
 //
-DynamicArrayFunctionStatues Push_Back_Some_data_Into_A_Dynamic_Array(DynamicArray* dyarr, void* data_array, size_t array_num, size_t pos,size_t data_inarray_size)
+DynamicArrayFunctionStatues Push_Back_Some_data_Into_A_Dynamic_Array(
+	DynamicArray*										dyarr, 
+	void*												data_array, 
+	size_t												array_num, 
+	size_t												pos,
+	size_t												data_inarray_size
+)
 {
 	if (!dyarr && !data_array)
 	{
@@ -450,7 +489,10 @@ DynamicArrayFunctionStatues Push_Back_Some_data_Into_A_Dynamic_Array(DynamicArra
 //Reshape the dynamic array
 //NOT ROCOMMEND TO USE UNLESS YOU ARE CONCIOUS OF WHAT YOU ARE DOING
 //
-DynamicArrayFunctionStatues Resize_The_Dynamic_Array(DynamicArray* dyarr,size_t wished_new_space_size)
+DynamicArrayFunctionStatues Resize_The_Dynamic_Array(
+	DynamicArray*										dyarr,
+	size_t												wished_new_space_size
+)
 {
 	if(!dyarr)
 	{
@@ -478,7 +520,11 @@ DynamicArrayFunctionStatues Resize_The_Dynamic_Array(DynamicArray* dyarr,size_t 
 // data, 
 // where_to_insert,
 //
-DynamicArrayFunctionStatues Insert_Into_A_Dynamic_Array(DynamicArray* dyarr, void* data, size_t pos)
+DynamicArrayFunctionStatues Insert_Into_A_Dynamic_Array(
+	DynamicArray*										dyarr, 
+	void*												data, 
+	size_t												pos
+)
 {
 	if (!dyarr && !data)
 	{
@@ -522,7 +568,13 @@ DynamicArrayFunctionStatues Insert_Into_A_Dynamic_Array(DynamicArray* dyarr, voi
 // sizeof(data)
 //)
 //
-DynamicArrayFunctionStatues Insert_Some_Data_Into_A_Dynamic_Array(DynamicArray* dyarr, size_t pos, void* data_array, size_t array_num,size_t data_inarray_size)
+DynamicArrayFunctionStatues Insert_Some_Data_Into_A_Dynamic_Array(
+	DynamicArray*										dyarr,
+	size_t												pos,
+	void*												data_array, 
+	size_t												array_num,
+	size_t												data_inarray_size
+)
 {
 	if (!dyarr && !data_array)
 	{
@@ -536,7 +588,13 @@ DynamicArrayFunctionStatues Insert_Some_Data_Into_A_Dynamic_Array(DynamicArray* 
 	}
 	if (!dyarr->current_size)
 	{
-		Push_Back_Some_data_Into_A_Dynamic_Array(dyarr, data_array, array_num, pos,data_inarray_size);
+		Push_Back_Some_data_Into_A_Dynamic_Array(
+			dyarr, 
+			data_array, 
+			array_num, 
+			pos,
+			data_inarray_size
+		);
 		return DynamicArray_Normal;
 	}
 	if (dyarr->current_size == dyarr->total_usable_size)
@@ -570,7 +628,10 @@ DynamicArrayFunctionStatues Insert_Some_Data_Into_A_Dynamic_Array(DynamicArray* 
 // use like this:
 // AppendByMergeDynamicArray(dyarr_be_appended, exp_append_array)
 //
-DynamicArrayFunctionStatues AppendByMergeDynamicArray(DynamicArray* dyarr_be_appended, DynamicArray* exp_append_array)
+DynamicArrayFunctionStatues AppendByMergeDynamicArray(
+	DynamicArray*											dyarr_be_appended,
+	DynamicArray*											exp_append_array
+)
 {
 	if (!dyarr_be_appended && !exp_append_array)
 	{
@@ -607,7 +668,12 @@ DynamicArrayFunctionStatues AppendByMergeDynamicArray(DynamicArray* dyarr_be_app
 //use like this
 // type* datawanna = Copy_A_Specific_DataFrom_A_Dynamic_Array_bypos(dyarr, datawanna, sizeof(datawanna))
 //
-void* Copy_A_Specific_DataFrom_A_Dynamic_Array_bypos(DynamicArray* dyarr, size_t pos,void* container,size_t container_size)
+void* Copy_A_Specific_DataFrom_A_Dynamic_Array_bypos(
+	DynamicArray*											dyarr, 
+	size_t													pos,
+	void*													container,
+	size_t													container_size
+)
 {
 	if (!dyarr)
 	{
@@ -633,7 +699,11 @@ void* Copy_A_Specific_DataFrom_A_Dynamic_Array_bypos(DynamicArray* dyarr, size_t
 		);
 		exit(DynamicArray_Invalid_Input);
 	}
-	memcpy(container, (char*)dyarr->DataPiece + pos * (dyarr->Single_Data_size), container_size);
+	memcpy(
+		container, 
+		(char*)dyarr->DataPiece + pos * (dyarr->Single_Data_size), 
+		container_size
+	);
 	return DynamicArray_Normal;
 }
 
@@ -642,7 +712,9 @@ void* Copy_A_Specific_DataFrom_A_Dynamic_Array_bypos(DynamicArray* dyarr, size_t
 // use like this:
 // Pop_Out_From_A_Dynamic_Array(dyarr)
 //
-DynamicArrayFunctionStatues Pop_Out_From_A_Dynamic_Array(DynamicArray* dyarr)
+DynamicArrayFunctionStatues Pop_Out_From_A_Dynamic_Array(
+	DynamicArray*											dyarr
+)
 {
 	if(!dyarr)
 	{
@@ -658,7 +730,9 @@ DynamicArrayFunctionStatues Pop_Out_From_A_Dynamic_Array(DynamicArray* dyarr)
 // use like this:
 // Clear_A_Dynamic_Array(dyarr)
 //
-DynamicArrayFunctionStatues Clear_A_Dynamic_Array(DynamicArray* dyarr)
+DynamicArrayFunctionStatues Clear_A_Dynamic_Array(
+	DynamicArray*											dyarr
+)
 {
 	if (!dyarr)
 	{
@@ -687,7 +761,9 @@ DynamicArrayFunctionStatues Clear_A_Dynamic_Array(DynamicArray* dyarr)
 // use like this:
 // Destroy_A_Dynamic_Array(dyarr)
 //
-DynamicArrayFunctionStatues Destroy_A_Dynamic_Array(DynamicArray* dyarr)
+DynamicArrayFunctionStatues Destroy_A_Dynamic_Array(
+	DynamicArray*												dyarr
+)
 {
 	if (!dyarr)
 	{
@@ -705,7 +781,11 @@ DynamicArrayFunctionStatues Destroy_A_Dynamic_Array(DynamicArray* dyarr)
 // use like this
 // Print_ALL_Data_In_A_Dynamic_Array(dyarr,user_print_funtional_pointer, Dyarr_OPEN or Dyarr_ClOSE)
 //
-DynamicArrayFunctionStatues Print_ALL_Data_In_A_Dynamic_Array(DynamicArray* dyarr,MyPrint user_print,BetterPrintSwitch_for_dyarr whether_better_print)
+DynamicArrayFunctionStatues Print_ALL_Data_In_A_Dynamic_Array(
+	DynamicArray*												dyarr,
+	MyPrint														user_print,
+	BetterPrintSwitch_for_dyarr									whether_better_print
+)
 {
 	if (!dyarr && !user_print)
 	{
@@ -732,7 +812,11 @@ DynamicArrayFunctionStatues Print_ALL_Data_In_A_Dynamic_Array(DynamicArray* dyar
 // use like this
 //Print_Specific_Data_In_A_Dynamic_Array(dyarr, user_print, pos)
 //
-DynamicArrayFunctionStatues Print_Specific_Data_In_A_Dynamic_Array(DynamicArray* dyarr, MyPrint user_print, size_t pos) 
+DynamicArrayFunctionStatues Print_Specific_Data_In_A_Dynamic_Array(
+	DynamicArray*												dyarr, 
+	MyPrint														user_print, 
+	size_t														pos
+) 
 {
 	if (!dyarr && !user_print)
 	{
@@ -755,7 +839,10 @@ DynamicArrayFunctionStatues Print_Specific_Data_In_A_Dynamic_Array(DynamicArray*
 // use like this
 // Do_Specific_Change_To_All_Data(dyarr, user_print, pos)
 //
-DynamicArrayFunctionStatues Do_Specific_Change_To_All_Data(DynamicArray* dyarr, Do_Specific_Change user_change) 
+DynamicArrayFunctionStatues Do_Specific_Change_To_All_Data(
+	DynamicArray*												dyarr, 
+	Do_Specific_Change											user_change
+) 
 {
 	if (!dyarr && !user_change)
 	{
@@ -772,7 +859,11 @@ DynamicArrayFunctionStatues Do_Specific_Change_To_All_Data(DynamicArray* dyarr, 
 // use like this
 // Do_Specific_Change_To_All_Data(dyarr, user_print, pos)
 //
-DynamicArrayFunctionStatues Do_Specific_Change_To_Specific_Data(DynamicArray* dyarr, Do_Specific_Change user_change, size_t pos)
+DynamicArrayFunctionStatues Do_Specific_Change_To_Specific_Data(
+	DynamicArray*												dyarr, 
+	Do_Specific_Change											user_change, 
+	size_t														pos
+)
 {
 	if (!dyarr && !user_change)
 	{
@@ -793,7 +884,10 @@ DynamicArrayFunctionStatues Do_Specific_Change_To_Specific_Data(DynamicArray* dy
 // use like this
 // Delete_A_Specific_Data_From_the_DynamicArray(dyarr,  pos)
 //
-DynamicArrayFunctionStatues Delete_A_Specific_Data_From_the_DynamicArray(DynamicArray* dyarr, size_t pos)
+DynamicArrayFunctionStatues Delete_A_Specific_Data_From_the_DynamicArray(
+	DynamicArray*												dyarr, 
+	size_t														pos
+)
 {
 	if(!dyarr)
 	{
@@ -819,7 +913,11 @@ DynamicArrayFunctionStatues Delete_A_Specific_Data_From_the_DynamicArray(Dynamic
 // use like this
 // Delete_A_Specific_Data_From_the_DynamicArray(dyarr, beginpos, endpos)
 //
-DynamicArrayFunctionStatues Delete_Some_Specific_Data_From_the_DynamicArray(DynamicArray* dyarr, size_t Beginpos, size_t Endpos)
+DynamicArrayFunctionStatues Delete_Some_Specific_Data_From_the_DynamicArray(
+	DynamicArray*												dyarr, 
+	size_t														Beginpos, 
+	size_t														Endpos
+)
 {
 	if (!dyarr)
 	{
@@ -855,7 +953,9 @@ DynamicArrayFunctionStatues Delete_Some_Specific_Data_From_the_DynamicArray(Dyna
 // use like this
 // Delete_A_Specific_Data_From_the_DynamicArray(dyarr,  pos)
 //
-DynamicArrayFunctionStatues reverse_Data_In_DynamicArray(DynamicArray* dyarr) 
+DynamicArrayFunctionStatues reverse_Data_In_DynamicArray(
+	DynamicArray*												dyarr
+) 
 {
 	if(!dyarr)
 	{
@@ -895,7 +995,9 @@ DynamicArrayFunctionStatues reverse_Data_In_DynamicArray(DynamicArray* dyarr)
 // use like this:
 // isEmpty_InDynamicArray(dyarr)
 //
-Bool isEmpty_InDynamicArray(DynamicArray* dyarr) 
+Bool isEmpty_InDynamicArray(
+	DynamicArray*												dyarr
+) 
 {
 	if (!dyarr)
 	{
@@ -912,7 +1014,11 @@ Bool isEmpty_InDynamicArray(DynamicArray* dyarr)
 // use like this:
 // swapData_in_DynamicArray(dyarr,pos1,pos2)
 //
-DynamicArrayFunctionStatues swapData_in_DynamicArray(DynamicArray* dyarr, size_t pos1, size_t pos2)
+DynamicArrayFunctionStatues swapData_in_DynamicArray(
+	DynamicArray*												dyarr, 
+	size_t														pos1, 
+	size_t														pos2
+)
 {
 	if (!dyarr)
 	{
@@ -960,7 +1066,10 @@ DynamicArrayFunctionStatues swapData_in_DynamicArray(DynamicArray* dyarr, size_t
 // use like this:
 // sort_In_Dynamic_Array(dyarr,comparision_funcuntional_pointer)
 //
-DynamicArrayFunctionStatues sort_In_Dynamic_Array(DynamicArray* dyarr,CompareFunc compfunc) 
+DynamicArrayFunctionStatues sort_In_Dynamic_Array(
+	DynamicArray*												dyarr,
+	CompareFunc													compfunc
+) 
 {
 	if (!dyarr)
 	{
@@ -992,7 +1101,11 @@ DynamicArrayFunctionStatues sort_In_Dynamic_Array(DynamicArray* dyarr,CompareFun
 // use like this:
 // isLocateinDyarr(dyarr, data, comparision_funcuntional_pointer)
 //
-DynamicArrayFunctionStatues isLocateinDyarr(DynamicArray* dyarr, void* data,LocateFunc user_func)
+DynamicArrayFunctionStatues isLocateinDyarr(
+	DynamicArray*												dyarr,
+	void*														data,
+	LocateFunc													user_func
+)
 {
 	if (!dyarr)
 	{
@@ -1024,7 +1137,11 @@ DynamicArrayFunctionStatues isLocateinDyarr(DynamicArray* dyarr, void* data,Loca
 // use like this:
 // returnAElembyPos_inDyarr(dyarr, data, comparision_funcuntional_pointer)
 //
-DynamicArrayFunctionStatues returnAElembyPos_inDyarr(DynamicArray* dyarr, void* data, LocateFunc user_func) 
+DynamicArrayFunctionStatues returnAElembyPos_inDyarr(
+	DynamicArray*												dyarr, 
+	void*														data, 
+	LocateFunc													user_func
+) 
 {
 	if (!dyarr)
 	{
@@ -1058,7 +1175,12 @@ DynamicArrayFunctionStatues returnAElembyPos_inDyarr(DynamicArray* dyarr, void* 
 // Position_Stored_Dynamic_ArrayFordyarr* pos =r eturnAElembyPos_inDyarr(dyarr, posArr,data, comparision_funcuntional_pointer)
 //
 #if OPENUPPOSARR
-Position_Stored_Dynamic_ArrayFordyarr* returnABunchofData_inDyarr(DynamicArray* dyarr, Position_Stored_Dynamic_ArrayFordyarr* posArr, void* data, LocateFunc user_func)
+Position_Stored_Dynamic_ArrayFordyarr* returnABunchofData_inDyarr(
+	DynamicArray*									dyarr, 
+	Position_Stored_Dynamic_ArrayFordyarr*			posArr, 
+	void*											data, 
+	LocateFunc										user_func
+)
 {
 	if (!dyarr)
 	{
