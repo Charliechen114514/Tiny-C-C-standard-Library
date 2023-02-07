@@ -39,7 +39,7 @@ typedef enum _bool_ {
 //
 typedef enum _DynamicArray_isFind_ {
 	Find=1,
-	Unfind=0
+	Unfind=-1
 }DynamicArray_isFind;
 
 //A switch that used in better Print in Dynamic Array!
@@ -197,7 +197,7 @@ DynamicArrayFunctionStatues Show_All_Locations_In_PSDAfor_dyarr(
 	if (Whether_Better_Print == PSDA_dyarr_OPEN)
 		printf("\nFinish Printing!\n");
 	return DynamicArray_Normal;
-}\
+}
 
 //About Positions_Stored_Dynamic_Array
 //this function is aimed to push back a position into the Position_Stored_Dynamic_ArrayFordyarr
@@ -255,7 +255,26 @@ DynamicArrayFunctionStatues DesTroy_A_PSDA_for_dyarr(
 	pointer_to_wishedfreeposarr = NULL;
 	return DynamicArray_Normal;
 }
-
+//About Positions_Stored_Dynamic_Array
+//return a pos that is targeted!
+//
+void* getPosbyPosinPSDA(
+	Position_Stored_Dynamic_ArrayFordyarr*				getter,
+	size_t												pos
+) 
+{
+	if (!getter) {
+		SHOW_ERROR_DynamicArray_NULL_INPUT;
+		exit(DynamicArray_Invalid_Free);
+	}
+	if (pos > getter->pos_size)
+	{
+		SHOW_ERROR_DynamicArray_Invalid_Input;
+		exit(DynamicArray_Invalid_Input);
+	}
+	for (int i = 0; i < pos; i++)
+		return (char*)getter->posSpace + i * sizeof(size_t);
+}
 #endif
 
 //----------------------------------DynamicArray----------------------------------------------------------------------
@@ -362,7 +381,8 @@ DynamicArray* Updata_A_Static_Array_To_Dynamic_Array(
 //
 DynamicArrayFunctionStatues Push_Back_Into_A_Dynamic_Array(
 	DynamicArray*										dyarr, 
-	void*												data
+	void*												data,
+	size_t												datasize
 )
 {
 	if (!dyarr && !data)
@@ -370,8 +390,9 @@ DynamicArrayFunctionStatues Push_Back_Into_A_Dynamic_Array(
 		SHOW_ERROR_DynamicArray_NULL_INPUT;
 		exit(DynamicArray_NULL_INPUT);
 	}
-	if (sizeof(data) != dyarr->Single_Data_size) 
+	if (datasize != dyarr->Single_Data_size) 
 	{
+		printf("%d ", sizeof(data));
 		SHOW_ERROR_DynamicArray_Invalid_Input;
 		exit(DynamicArray_Invalid_Input);
 	}
@@ -607,8 +628,6 @@ DynamicArrayFunctionStatues insert_back_Same_data_Into_A_Dynamic_Array(
 	dyarr->current_size += n_repeat;
 	return DynamicArray_Normal;
 }
-
-
 
 //About Dynamic Array
 //Insert back some data that organized in static array

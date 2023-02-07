@@ -15,10 +15,11 @@ LocateFunc loc(int* e1, int* e2) {
 int main()
 {
 	int data1 = 10;
+	printf("%d ", sizeof(data1));
 	//test Initing
 	DynamicArray* testDyarr1 = Init_A_DynamicArray(10, Dyarr_SIGINT);
 	//test a Sigdata pushed:
-	Push_Back_Into_A_Dynamic_Array(testDyarr1, &data1);
+	Push_Back_Into_A_Dynamic_Array(testDyarr1, &data1,sizeof(int));
 	Print_ALL_Data_In_A_Dynamic_Array(testDyarr1, print, Dyarr_OPEN);
 	//test pushing the same data
 	Push_back_Same_data_Into_A_Dynamic_Array(testDyarr1, &data1, 10, Dyarr_SIGINT);

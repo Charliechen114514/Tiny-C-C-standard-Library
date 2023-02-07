@@ -169,29 +169,36 @@ Position_Stored_Dynamic_ArrayFordyarr* Init_A_Postion_Stored_Dynamic_ArrayFordya
 ////Use PSDA_dyarr_OPEN to have a better shown ,else use PSDA_dyarr_CLOSE
 //
 DynamicArrayFunctionStatues Show_All_Locations_In_PSDAfor_dyarr(
-	Position_Stored_Dynamic_ArrayFordyarr*	posarr, 
+	Position_Stored_Dynamic_ArrayFordyarr* posarr,
 	BetterPrintfor_PosDyarr					Whether_Better_Print
 );
 //About Positions_Stored_Dynamic_Array
 //this function is aimed to push back a position into the Position_Stored_Dynamic_ArrayFordyarr
 //
 DynamicArrayFunctionStatues Push_back_a_locations_in_PSDA_dyarr(
-	Position_Stored_Dynamic_ArrayFordyarr*			posarr, 
-									   int			pos_acquired
+	Position_Stored_Dynamic_ArrayFordyarr* posarr,
+	int			pos_acquired
 );
 //About Positions_Stored_Dynamic_Array
 //this function is aimed to return the number of locations
 //Use PSDA_dyarr_OPEN to have a better shown ,else use PSDA_dyarr_CLOSE
 //
 size_t Get_pos_size_From_PSDA_for_dyarr(
-	Position_Stored_Dynamic_ArrayFordyarr*			posarr, 
+	Position_Stored_Dynamic_ArrayFordyarr* posarr,
 	BetterPrintfor_PosDyarr							Whether_Shown_Print
 );
 //About Positions_Stored_Dynamic_Array
 //Erase a dynamic Array when donot using it!
 //
 DynamicArrayFunctionStatues DesTroy_A_PSDA_for_dyarr(
-	Position_Stored_Dynamic_ArrayFordyarr*			pointer_to_wishedfreeposarr
+	Position_Stored_Dynamic_ArrayFordyarr* pointer_to_wishedfreeposarr
+);
+//About Positions_Stored_Dynamic_Array
+//return a pos that is targeted!
+//
+void* getPosbyPosinPSDA(
+	Position_Stored_Dynamic_ArrayFordyarr* getter,
+	size_t												pos
 );
 #endif
 
@@ -201,7 +208,7 @@ DynamicArrayFunctionStatues DesTroy_A_PSDA_for_dyarr(
 //Use like this: DynamicArray* Dyarr = Init_A_DynamicArray(expected_number, datasize)
 //
 DynamicArray* Init_A_DynamicArray(
-	size_t					expected_number, 
+	size_t					expected_number,
 	size_t					datasize
 );
 //About Dynamic Array
@@ -209,7 +216,7 @@ DynamicArray* Init_A_DynamicArray(
 //Use like this: DynamicArray* copied_one = Init_A_DynamicArray_by_CopyADyarr(be_copied)
 //
 DynamicArray* Init_A_DynamicArray_by_CopyADyarr(
-	DynamicArray*			dyarr_copied
+	DynamicArray* dyarr_copied
 );
 //About Dynamic Array
 //An update! used to transform a static array to DynamicArray
@@ -220,8 +227,8 @@ DynamicArray* Init_A_DynamicArray_by_CopyADyarr(
 //how_many_data_are_there_in_the_static_array)
 //
 DynamicArray* Updata_A_Static_Array_To_Dynamic_Array(
-	void*						data, 
-	size_t						datasize, 
+	void* data,
+	size_t						datasize,
 	size_t						datanum
 );
 //About Dynamic Array
@@ -229,8 +236,9 @@ DynamicArray* Updata_A_Static_Array_To_Dynamic_Array(
 //Use like this: Push_Back_Into_A_Dynamic_Array(dyarr,data)
 //
 DynamicArrayFunctionStatues Push_Back_Into_A_Dynamic_Array(
-	DynamicArray*				dyarr, 
-	void*						data
+	DynamicArray*										dyarr,
+	void*												data,
+	size_t												datasize
 );
 //About Dynamic Array
 //Push back a lot of data that has a organization that has all the same data
@@ -238,9 +246,9 @@ DynamicArrayFunctionStatues Push_Back_Into_A_Dynamic_Array(
 //Push_back_Same_data_Into_A_Dynamic_Array(dyarr,data,the_time_data_repeated,sizeof(data))
 //
 DynamicArrayFunctionStatues Push_back_Same_data_Into_A_Dynamic_Array(
-	DynamicArray*				dyarr, 
-	void*						data, 
-	size_t						n_repeat, 
+	DynamicArray* dyarr,
+	void* data,
+	size_t						n_repeat,
 	size_t						datasize
 );
 //About Dynamic Array
@@ -253,10 +261,10 @@ DynamicArrayFunctionStatues Push_back_Same_data_Into_A_Dynamic_Array(
 //sizeof(data))
 //
 DynamicArrayFunctionStatues Push_Back_Some_data_Into_A_Dynamic_Array(
-	DynamicArray*				dyarr, 
-	void*						data_array, 
-	size_t						array_num, 
-	size_t						pos, 
+	DynamicArray* dyarr,
+	void* data_array,
+	size_t						array_num,
+	size_t						pos,
 	size_t						data_inarray_size
 );
 //About Dynamic Array
@@ -264,7 +272,7 @@ DynamicArrayFunctionStatues Push_Back_Some_data_Into_A_Dynamic_Array(
 //NOT ROCOMMEND TO USE UNLESS YOU ARE CONCIOUS OF WHAT YOU ARE DOING
 //
 DynamicArrayFunctionStatues Resize_The_Dynamic_Array(
-	DynamicArray*				dyarr, 
+	DynamicArray* dyarr,
 	size_t						wished_new_space_size
 );
 // About Dynamic Array
@@ -276,8 +284,8 @@ DynamicArrayFunctionStatues Resize_The_Dynamic_Array(
 // where_to_insert,
 //
 DynamicArrayFunctionStatues Insert_Into_A_Dynamic_Array(
-	DynamicArray*				dyarr, 
-	void*						data, 
+	DynamicArray* dyarr,
+	void* data,
 	size_t						pos
 );
 
@@ -292,7 +300,7 @@ DynamicArrayFunctionStatues insert_back_Same_data_Into_A_Dynamic_Array(
 	size_t												n_repeat,
 	size_t												datasize,
 	size_t												pos
-)
+);
 //About Dynamic Array
 //Insert back some data that organized in static array
 //use like this: Insert_Into_A_Dynamic_Array(
@@ -304,10 +312,10 @@ DynamicArrayFunctionStatues insert_back_Same_data_Into_A_Dynamic_Array(
 //)
 //
 DynamicArrayFunctionStatues Insert_Some_Data_Into_A_Dynamic_Array(
-	DynamicArray*				dyarr, 
-	size_t						pos, 
-	void*						data_array, 
-	size_t						array_num, 
+	DynamicArray* dyarr,
+	size_t						pos,
+	void* data_array,
+	size_t						array_num,
 	size_t						data_inarray_size
 );
 //About Dynamic Array
@@ -316,8 +324,8 @@ DynamicArrayFunctionStatues Insert_Some_Data_Into_A_Dynamic_Array(
 // AppendByMergeDynamicArray(dyarr_be_appended, exp_append_array)
 //
 DynamicArrayFunctionStatues AppendByMergeDynamicArray(
-	DynamicArray*				dyarr_be_appended, 
-	DynamicArray*				exp_append_array
+	DynamicArray* dyarr_be_appended,
+	DynamicArray* exp_append_array
 );
 //About Dynamic Array
 //Gain a copy of targeted array from the dynamic array
@@ -325,9 +333,9 @@ DynamicArrayFunctionStatues AppendByMergeDynamicArray(
 // type* datawanna = Copy_A_Specific_DataFrom_A_Dynamic_Array_bypos(dyarr, datawanna, sizeof(datawanna))
 //
 void* Copy_A_Specific_DataFrom_A_Dynamic_Array_bypos(
-	DynamicArray*				dyarr, 
-	size_t						pos, 
-	void*						container, 
+	DynamicArray* dyarr,
+	size_t						pos,
+	void* container,
 	size_t						container_size
 );
 
@@ -337,7 +345,7 @@ void* Copy_A_Specific_DataFrom_A_Dynamic_Array_bypos(
 // Pop_Out_From_A_Dynamic_Array(dyarr)
 //
 DynamicArrayFunctionStatues Pop_Out_From_A_Dynamic_Array(
-	DynamicArray*				dyarr
+	DynamicArray* dyarr
 );
 
 // About Dynamic Array
@@ -346,7 +354,7 @@ DynamicArrayFunctionStatues Pop_Out_From_A_Dynamic_Array(
 // Pop_Out_From_A_Dynamic_Array(dyarr)
 //
 DynamicArrayFunctionStatues Pop_Out_From_A_Dynamic_Array(
-	DynamicArray*				dyarr
+	DynamicArray* dyarr
 );
 
 // About Dynamic Array
@@ -355,7 +363,7 @@ DynamicArrayFunctionStatues Pop_Out_From_A_Dynamic_Array(
 // Clear_A_Dynamic_Array(dyarr)
 //
 DynamicArrayFunctionStatues Clear_A_Dynamic_Array(
-	DynamicArray*				dyarr
+	DynamicArray* dyarr
 );
 // About Dynamic Array
 // Actually erase all elements! and unable to be used again!
@@ -363,7 +371,7 @@ DynamicArrayFunctionStatues Clear_A_Dynamic_Array(
 // Destroy_A_Dynamic_Array(dyarr)
 //
 DynamicArrayFunctionStatues Destroy_A_Dynamic_Array(
-	DynamicArray*				dyarr
+	DynamicArray* dyarr
 );
 // About Dynamic Array
 // Actually Print All data
@@ -371,8 +379,8 @@ DynamicArrayFunctionStatues Destroy_A_Dynamic_Array(
 // Print_ALL_Data_In_A_Dynamic_Array(dyarr,user_print_funtional_pointer, Dyarr_OPEN or Dyarr_ClOSE)
 //
 DynamicArrayFunctionStatues Print_ALL_Data_In_A_Dynamic_Array(
-	DynamicArray*				dyarr, 
-	MyPrint						user_print, 
+	DynamicArray* dyarr,
+	MyPrint						user_print,
 	BetterPrintSwitch_for_dyarr whether_better_print
 );
 // About Dynamic Array
@@ -381,8 +389,8 @@ DynamicArrayFunctionStatues Print_ALL_Data_In_A_Dynamic_Array(
 //Print_Specific_Data_In_A_Dynamic_Array(dyarr, user_print, pos)
 //
 DynamicArrayFunctionStatues Print_Specific_Data_In_A_Dynamic_Array(
-	DynamicArray*				dyarr,
-	MyPrint						user_print, 
+	DynamicArray* dyarr,
+	MyPrint						user_print,
 	size_t						pos
 );
 // About Dynamic Array
@@ -391,7 +399,7 @@ DynamicArrayFunctionStatues Print_Specific_Data_In_A_Dynamic_Array(
 // Do_Specific_Change_To_All_Data(dyarr, user_print, pos)
 //
 DynamicArrayFunctionStatues Do_Specific_Change_To_All_Data(
-	DynamicArray*				dyarr, 
+	DynamicArray* dyarr,
 	Do_Specific_Change			user_change
 );
 // About Dynamic Array
@@ -400,8 +408,8 @@ DynamicArrayFunctionStatues Do_Specific_Change_To_All_Data(
 // Do_Specific_Change_To_All_Data(dyarr, user_print, pos)
 //
 DynamicArrayFunctionStatues Do_Specific_Change_To_Specific_Data(
-	DynamicArray*				dyarr, 
-	Do_Specific_Change			user_change, 
+	DynamicArray* dyarr,
+	Do_Specific_Change			user_change,
 	size_t						pos
 );
 // About Dynamic Array
@@ -410,7 +418,7 @@ DynamicArrayFunctionStatues Do_Specific_Change_To_Specific_Data(
 // Delete_A_Specific_Data_From_the_DynamicArray(dyarr,  pos)
 //
 DynamicArrayFunctionStatues Delete_A_Specific_Data_From_the_DynamicArray(
-	DynamicArray*				dyarr, 
+	DynamicArray* dyarr,
 	size_t						pos
 );
 // About Dynamic Array
@@ -419,8 +427,8 @@ DynamicArrayFunctionStatues Delete_A_Specific_Data_From_the_DynamicArray(
 // Delete_A_Specific_Data_From_the_DynamicArray(dyarr, beginpos, endpos)
 //
 DynamicArrayFunctionStatues Delete_Some_Specific_Data_From_the_DynamicArray(
-	DynamicArray*				dyarr, 
-	size_t						Beginpos, 
+	DynamicArray* dyarr,
+	size_t						Beginpos,
 	size_t						Endpos
 );
 // About Dynamic Array
@@ -429,7 +437,7 @@ DynamicArrayFunctionStatues Delete_Some_Specific_Data_From_the_DynamicArray(
 // Delete_A_Specific_Data_From_the_DynamicArray(dyarr,  pos)
 //
 DynamicArrayFunctionStatues reverse_Data_In_DynamicArray(
-	DynamicArray*				dyarr
+	DynamicArray* dyarr
 );
 //
 // About Dynamic Array
@@ -438,7 +446,7 @@ DynamicArrayFunctionStatues reverse_Data_In_DynamicArray(
 // isEmpty_InDynamicArray(dyarr)
 //
 Bool isEmpty_InDynamicArray(
-	DynamicArray*				dyarr
+	DynamicArray* dyarr
 );
 // About Dynamic Array
 // this is used in swap data
@@ -446,8 +454,8 @@ Bool isEmpty_InDynamicArray(
 // swapData_in_DynamicArray(dyarr,pos1,pos2)
 //
 DynamicArrayFunctionStatues swapData_in_DynamicArray(
-	DynamicArray*				dyarr, 
-	size_t						pos1, 
+	DynamicArray* dyarr,
+	size_t						pos1,
 	size_t						pos2
 );
 // About Dynamic Array
@@ -457,7 +465,7 @@ DynamicArrayFunctionStatues swapData_in_DynamicArray(
 // sort_In_Dynamic_Array(dyarr,comparision_funcuntional_pointer)
 //
 DynamicArrayFunctionStatues sort_In_Dynamic_Array(
-	DynamicArray*				dyarr, 
+	DynamicArray* dyarr,
 	CompareFunc					compfunc
 );
 // About Dynamic Array
@@ -466,8 +474,8 @@ DynamicArrayFunctionStatues sort_In_Dynamic_Array(
 // isLocateinDyarr(dyarr, data, comparision_funcuntional_pointer)
 //
 DynamicArrayFunctionStatues isLocateinDyarr(
-	DynamicArray*				dyarr, 
-	void*						data, 
+	DynamicArray* dyarr,
+	void* data,
 	LocateFunc					user_func
 );
 // About Dynamic Array
@@ -476,8 +484,8 @@ DynamicArrayFunctionStatues isLocateinDyarr(
 // returnAElembyPos_inDyarr(dyarr, data, comparision_funcuntional_pointer)
 //
 DynamicArrayFunctionStatues returnAElembyPos_inDyarr(
-	DynamicArray*				dyarr, 
-	void*						data, 
+	DynamicArray* dyarr,
+	void* data,
 	LocateFunc					user_func
 );
 // About Dynamic Array
@@ -488,9 +496,9 @@ DynamicArrayFunctionStatues returnAElembyPos_inDyarr(
 //
 #if OPENUPPOSARR
 Position_Stored_Dynamic_ArrayFordyarr* returnABunchofData_inDyarr(
-	DynamicArray*				dyarr, 
-	Position_Stored_Dynamic_ArrayFordyarr* posArr, 
-	void*						data, 
+	DynamicArray* dyarr,
+	Position_Stored_Dynamic_ArrayFordyarr* posArr,
+	void* data,
 	LocateFunc					user_func
 );
 #endif
