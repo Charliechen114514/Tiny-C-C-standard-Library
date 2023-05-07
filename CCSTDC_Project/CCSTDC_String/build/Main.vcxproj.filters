@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\陈冠豪\Desktop\Already_Done!\CCSTDC_Project\CCSTDC_String\source\CCSTDC_String.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\陈冠豪\Desktop\Already_Done!\CCSTDC_Project\CCSTDC_String\testOutDemo.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\陈冠豪\Desktop\Already_Done!\CCSTDC_Project\CCSTDC_String\include\CCSTDC_String.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\陈冠豪\Desktop\Already_Done!\CCSTDC_Project\CCSTDC_String\include\CCSTDC_Utils.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\陈冠豪\Desktop\Already_Done!\CCSTDC_Project\CCSTDC_String\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{101A4D28-A2E5-37DB-A4FA-581121284F11}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{E08F1387-C30B-3093-98FD-CCBF575147CD}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
