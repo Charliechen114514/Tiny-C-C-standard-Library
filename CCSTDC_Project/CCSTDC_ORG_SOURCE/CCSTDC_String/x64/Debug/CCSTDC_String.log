@@ -1,8 +1,0 @@
-﻿  CCSTDC_String.c
-D:\My coding repositary\VS 2022\C语言\日期组练习\1\CCSTDC_String\CCSTDC_String.c(279,20): warning C4018: “<”: 有符号/无符号不匹配
-D:\My coding repositary\VS 2022\C语言\日期组练习\1\CCSTDC_String\CCSTDC_String.c(287,1): warning C4067: 预处理器指令后有意外标记 - 应输入换行符
-D:\My coding repositary\VS 2022\C语言\日期组练习\1\CCSTDC_String\CCSTDC_String.c(379,20): warning C4018: “<”: 有符号/无符号不匹配
-D:\My coding repositary\VS 2022\C语言\日期组练习\1\CCSTDC_String\CCSTDC_String.c(399,25): warning C4018: “>”: 有符号/无符号不匹配
-D:\My coding repositary\VS 2022\C语言\日期组练习\1\CCSTDC_String\CCSTDC_String.c(429,20): warning C4018: “<”: 有符号/无符号不匹配
-D:\My coding repositary\VS 2022\C语言\日期组练习\1\CCSTDC_String\CCSTDC_String.c(286): warning C4715: “searchElementarySingleCharInString”: 不是所有的控件路径都返回值
-  CCSTDC_String.vcxproj -> D:\My coding repositary\VS 2022\C语言\日期组练习\1\CCSTDC_String\x64\Debug\CCSTDC_String.exe

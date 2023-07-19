@@ -1,3 +1,0 @@
-C:/Users/陈冠豪/Desktop/Already_Done!/CCSTDC_Project/CCSTDC_String/build/CMakeFiles/Main.dir
-C:/Users/陈冠豪/Desktop/Already_Done!/CCSTDC_Project/CCSTDC_String/build/CMakeFiles/ALL_BUILD.dir
-C:/Users/陈冠豪/Desktop/Already_Done!/CCSTDC_Project/CCSTDC_String/build/CMakeFiles/ZERO_CHECK.dir
