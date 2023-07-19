@@ -1,0 +1,24 @@
+﻿  CCSTDC_BinaryTree.c
+D:\My coding repositary\finAPI\CCSTDC_String\CCSTDC_Tree\CCSTDC_Tree\CCSTDC_BinaryTree.h(19,2): warning C4091: “typedef ”: 没有声明变量时忽略“<unnamed-enum-CCSTDC_Bigger>”的左侧
+D:\My coding repositary\finAPI\CCSTDC_String\CCSTDC_Tree\CCSTDC_Tree\CCSTDC_BinaryTree.h(25,2): warning C4091: “typedef ”: 没有声明变量时忽略“<unnamed-enum-CCSTDC_PreOrder>”的左侧
+D:\My coding repositary\finAPI\CCSTDC_String\CCSTDC_Tree\CCSTDC_Tree\CCSTDC_BinaryTree.c(36,3): warning C4033: “CCSTDC_BinarySearchTree_TravelAndImpactTheSubTree”必须返回值
+D:\My coding repositary\finAPI\CCSTDC_String\CCSTDC_Tree\CCSTDC_Tree\CCSTDC_BinaryTree.c(398,3): warning C4033: “_CCSTDC_BinarySearchTree_PrintDataInList”必须返回值
+D:\My coding repositary\finAPI\CCSTDC_String\CCSTDC_Tree\CCSTDC_Tree\CCSTDC_BinaryTree.c(432,3): warning C4033: “CCSTDC_BinarySearchTree_EraseSubTree”必须返回值
+D:\My coding repositary\finAPI\CCSTDC_String\CCSTDC_Tree\CCSTDC_Tree\CCSTDC_BinaryTree.c(450,2): warning C4018: “<”: 有符号/无符号不匹配
+D:\My coding repositary\finAPI\CCSTDC_String\CCSTDC_Tree\CCSTDC_Tree\CCSTDC_BinaryTree.c(462,3): warning C4033: “CCSTDC_BinarySearchTree_EraseWholeTree”必须返回值
+D:\My coding repositary\finAPI\CCSTDC_String\CCSTDC_Tree\CCSTDC_Tree\CCSTDC_BinaryTree.c(466,3): warning C4033: “CCSTDC_BinarySearchTree_EraseWholeTree”必须返回值
+  test.c
+D:\My coding repositary\finAPI\CCSTDC_String\CCSTDC_Tree\CCSTDC_Tree\CCSTDC_BinaryTree.h(19,2): warning C4091: “typedef ”: 没有声明变量时忽略“<unnamed-enum-CCSTDC_Bigger>”的左侧
+D:\My coding repositary\finAPI\CCSTDC_String\CCSTDC_Tree\CCSTDC_Tree\CCSTDC_BinaryTree.h(25,2): warning C4091: “typedef ”: 没有声明变量时忽略“<unnamed-enum-CCSTDC_PreOrder>”的左侧
+  正在生成代码...
+D:\My coding repositary\finAPI\CCSTDC_String\CCSTDC_Tree\CCSTDC_Tree\test.c(12): warning C4715: “intComp”: 不是所有的控件路径都返回值
+D:\My coding repositary\finAPI\CCSTDC_String\CCSTDC_Tree\CCSTDC_Tree\CCSTDC_BinaryTree.c(18): warning C4715: “CCSTDC_BinarySearchTree_initEmptyBinarySearchTree”: 不是所有的控件路径都返回值
+D:\My coding repositary\finAPI\CCSTDC_String\CCSTDC_Tree\CCSTDC_Tree\CCSTDC_BinaryTree.c(59): warning C4715: “CCSTDC_BinarySearchTree_TravelAndImpactTheSubTree”: 不是所有的控件路径都返回值
+D:\My coding repositary\finAPI\CCSTDC_String\CCSTDC_Tree\CCSTDC_Tree\CCSTDC_BinaryTree.c(385): warning C4715: “CCSTDC_BinarySearchTree_InsertArray”: 不是所有的控件路径都返回值
+D:\My coding repositary\finAPI\CCSTDC_String\CCSTDC_Tree\CCSTDC_Tree\CCSTDC_BinaryTree.c(362): warning C4715: “CCSTDC_BinarySearchTree_ALV_InsertArray”: 不是所有的控件路径都返回值
+D:\My coding repositary\finAPI\CCSTDC_String\CCSTDC_Tree\CCSTDC_Tree\CCSTDC_BinaryTree.c(439): warning C4716: “CCSTDC_BinarySearchTree_EraseSubTree”: 必须返回一个值
+D:\My coding repositary\finAPI\CCSTDC_String\CCSTDC_Tree\CCSTDC_Tree\CCSTDC_BinaryTree.c(426): warning C4715: “_CCSTDC_BinarySearchTree_PrintDataInList”: 不是所有的控件路径都返回值
+D:\My coding repositary\finAPI\CCSTDC_String\CCSTDC_Tree\CCSTDC_Tree\CCSTDC_BinaryTree.c(457): warning C4715: “CCSTDC_BinarySearchTree_DrawBinTree”: 不是所有的控件路径都返回值
+D:\My coding repositary\finAPI\CCSTDC_String\CCSTDC_Tree\CCSTDC_Tree\CCSTDC_BinaryTree.c(471): warning C4716: “CCSTDC_BinarySearchTree_EraseWholeTree”: 必须返回一个值
+D:\My coding repositary\finAPI\CCSTDC_String\CCSTDC_Tree\CCSTDC_Tree\CCSTDC_BinaryTree.c(496): warning C4715: “CCSTDC_BinarySearchTree_findTargetNode”: 不是所有的控件路径都返回值
+  CCSTDC_Tree.vcxproj -> D:\My coding repositary\finAPI\CCSTDC_String\CCSTDC_Tree\x64\Debug\CCSTDC_Tree.exe
