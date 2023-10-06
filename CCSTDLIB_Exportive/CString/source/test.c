@@ -12,14 +12,21 @@ int main()
 	printf("%d\n", compareCString(c, b));
 
 	CString* src = NULL, *sub = NULL;
-	InitCString(&src, "HHHHello");
+	InitCString(&src, "HHHHelloHellofioshoifhasndkHellodaiou");
 	InitCString(&sub, "Hello");
-	printf("\n%d\n", findSubCString(src,sub,0));
+	printf("\n%d\n", findSubCString(src, sub, 0));
+	printf("\n%d\n", findSubCString(src, sub, 4));
+	//ChangeCString(&src, "What is the String?");
+	//printf("%s\n", src->coreData);
 
-	ChangeCString(&src, "What is the String?");
-	printf("%s\n", src->coreData);
+	//RemoveTargetCString(&src, 'S');
+	//printf("%s\n", src->coreData);
 
-	RemoveTargetCString(&src, 'S');
-	printf("%s\n", src->coreData);
+	const char** res = SplitCString(src, sub);
+
+	while (*res != NULL)
+	{
+		printf("%s\n", *res);
+		res++;
+	}
 }
-

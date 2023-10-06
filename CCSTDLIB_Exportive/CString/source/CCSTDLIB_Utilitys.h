@@ -116,10 +116,10 @@ enum CCSTDLIB_ErrorCode
 #define CCSTDLIB_Raw_Malloc(Type) (Type*)malloc(sizeof(Type))
 #define CCSTDLIB_Raw_NMalloc(Type, N) (Type*)malloc(sizeof(Type) * (N))
 #define CCSTDLIB_Raw_REALLOC(Type, ptrName ,newSize) do{ \
-										Type* __CCSTDLIB_SPECIAL_PTR__ = (Type*)realloc(ptrName, newSize);\
+										Type* __CCSTDLIB_SPECIAL_PTR__ = (Type*)realloc(ptrName, newSize * sizeof(Type));\
 										if(__CCSTDLIB_SPECIAL_PTR__ == NULL) \
 											THROW_CCSTDLIB_CANNOT_MALLOC_EXCEPTION;\
-										ptrName = __CCSTDLIB_SPECIAL_PTR__; }while (0)
+										ptrName = __CCSTDLIB_SPECIAL_PTR__;}while (0)
 #define CCSTDLIB_SafeMalloc(Type, ptrName) do{ \
 								Type* __CCSTDLIB_SPECIAL_PTR__ = CCSTDLIB_Raw_Malloc(Type); \
 								if( __CCSTDLIB_SPECIAL_PTR__ == NULL)\
@@ -139,7 +139,7 @@ enum CCSTDLIB_ErrorCode
 
 #define CCSTDLIB_SafeFree(ptrName) do{	if(ptrName == NULL)\
 											THROW_CCSTDLIB_ILLEGAL_FREE_EXCEPTION;\
-										free(ptrName);}while(0)
+										free(ptrName);ptrName = NULL;}while(0)
 
 
 

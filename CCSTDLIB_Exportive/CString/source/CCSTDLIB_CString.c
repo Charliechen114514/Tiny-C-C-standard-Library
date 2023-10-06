@@ -214,15 +214,10 @@ void initNextArr(CCSTDLIB_CString* subs, int** nextArr)
 			prefixPos = (*nextArr)[prefixPos];
 		}
 	}
-
-	for (unsigned int i = 0; i < subs->strSize; i++)
-	{
-		printf("%d ", (*nextArr)[i]);
-	}
 }
 
 // Always return first place
-CCSTDLIB_Index findSubCString(CCSTDLIB_CString* source, CCSTDLIB_CString* sub, CCSTDLIB_Index from_index)
+CCSTDLIB_Index findSubCString(const CCSTDLIB_CString* source, CCSTDLIB_CString* sub, CCSTDLIB_Index from_index)
 {
 	if (source == NULL || sub == NULL)
 		THROW_CCSTDLIB_NULLPTR_EXCEPTION;
@@ -240,7 +235,7 @@ CCSTDLIB_Index findSubCString(CCSTDLIB_CString* source, CCSTDLIB_CString* sub, C
 	initNextArr(sub, &next);
 
 	int subIndex = 0;
-	int srcIndex = 0;
+	int srcIndex = from_index;
 
 	while (subIndex < (int)sub->strSize && srcIndex < (int)source->strSize)
 	{
@@ -258,7 +253,7 @@ CCSTDLIB_Index findSubCString(CCSTDLIB_CString* source, CCSTDLIB_CString* sub, C
 
 	}
 
-	if (srcIndex == source->strSize)
+	if (subIndex == sub->strSize)
 	{
 		return srcIndex - subIndex;
 	}
@@ -269,7 +264,7 @@ CCSTDLIB_Index findSubCString(CCSTDLIB_CString* source, CCSTDLIB_CString* sub, C
 }
 
 
-CCSTDLIB_BOOL getCharCString(CCSTDLIB_CString* source, const CCSTDLIB_Index index)
+CCSTDLIB_BOOL getCharCString(const CCSTDLIB_CString* source, const CCSTDLIB_Index index)
 {
 	if ((unsigned int)index >= source->strSize || index < 0)
 		THROW_CCSTDLIB_UNFIT_PARAM_EXCEPTION;
@@ -337,3 +332,70 @@ CCSTDLIB_BOOL RemoveTargetCString(CCSTDLIB_CString** source, const char ch)
 	return CCSTDLIB_TRUE;
 }
 
+const char* GetSubString(const CCSTDLIB_CString* source, CCSTDLIB_Index beg, CCSTDLIB_Index end)
+{
+	if (source == NULL)
+		THROW_CCSTDLIB_NULLPTR_EXCEPTION;
+	
+	if (beg >= end || beg < 0 || end < 0 || (unsigned int)beg > source->strSize || (unsigned int)end > source->strSize)
+		THROW_CCSTDLIB_UNFIT_PARAM_EXCEPTION;
+
+	char* res = NULL;
+	CCSTDLIB_SafeNMalloc(char, res, end - beg + 2);
+	for (int i = beg, j = 0; i <= end; i++)
+	{
+		res[j++] = source->coreData[i];
+		if (i == end)
+		{
+			res[j] = '\0';
+		}
+	}
+
+	return res;
+}
+
+
+const char** SplitCString(const CCSTDLIB_CString* source, CCSTDLIB_CString* spliter)
+{
+
+	if (source == NULL || source->coreData == NULL || spliter == NULL)
+	{
+		THROW_CCSTDLIB_NULLPTR_EXCEPTION;
+	}
+
+	if (source->coreData == "" || spliter->coreData == "")
+	{
+		return NULL;
+	}
+	CCSTDLIB_Index* pIndexArr = NULL;
+	const char** pStr = NULL;
+	int curNum = 1;
+	unsigned int curCheckIndex = 0;
+	// find All Begin
+	while (curCheckIndex <= source->strSize)
+	{	
+		curCheckIndex = findSubCString(source, spliter, curCheckIndex);
+		if (curCheckIndex == -1)
+		{
+			break;
+		}
+		CCSTDLIB_Raw_REALLOC(CCSTDLIB_Index, pIndexArr, curNum);
+		pIndexArr[curNum - 1] = curCheckIndex;
+		curNum++;
+		curCheckIndex++;
+	}
+	CCSTDLIB_Raw_REALLOC(CCSTDLIB_Index, pIndexArr, curNum);
+	// get All target Length
+	pIndexArr[curNum - 1] = source->strSize;
+	CCSTDLIB_SafeNMalloc(const char*, pStr, curNum);
+	for (int i = 0; i < curNum - 1; i++)
+	{
+		printf("%d %d\n", pIndexArr[i], pIndexArr[i + 1]);
+		pStr[i] = GetSubString(source, pIndexArr[i], pIndexArr[i + 1] - 1);
+	}
+
+	pStr[curNum - 1] = NULL;
+
+	CCSTDLIB_SafeFree(pIndexArr);
+	return pStr;
+}

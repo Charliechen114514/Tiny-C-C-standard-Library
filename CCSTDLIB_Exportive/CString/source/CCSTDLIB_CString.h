@@ -45,10 +45,10 @@ CCSTDLIB_EXPORT CCSTDLIB_CString*	reverseCString(CCSTDLIB_CString* src, enum Cop
 CCSTDLIB_EXPORT CCSTDLIB_Compare	compareCString(CCSTDLIB_CString* str1, CCSTDLIB_CString* str2);
 
 // findString
-CCSTDLIB_EXPORT CCSTDLIB_Index		findSubCString(CCSTDLIB_CString* source, CCSTDLIB_CString* sub, CCSTDLIB_Index from_index);
+CCSTDLIB_EXPORT CCSTDLIB_Index		findSubCString(const CCSTDLIB_CString* source, CCSTDLIB_CString* sub, CCSTDLIB_Index from_index);
 
 // get the char with giving index
-CCSTDLIB_EXPORT CCSTDLIB_BOOL		getCharCString(CCSTDLIB_CString* source, const CCSTDLIB_Index index);
+CCSTDLIB_EXPORT CCSTDLIB_BOOL		getCharCString(const CCSTDLIB_CString* source, const CCSTDLIB_Index index);
 
 // make modify to the target string
 CCSTDLIB_EXPORT CCSTDLIB_BOOL		changeCStringLimited(CCSTDLIB_CString** source, const char* newSource, const CCSTDLIB_Size nch);
@@ -59,4 +59,10 @@ CCSTDLIB_EXPORT CCSTDLIB_BOOL		EraseCString(CCSTDLIB_CString* source);
 
 // Remove targets
 CCSTDLIB_EXPORT CCSTDLIB_BOOL		RemoveTargetCString(CCSTDLIB_CString** source, const char ch);
+
+// getSubString
+CCSTDLIB_EXPORT const char*			GetSubString(const CCSTDLIB_CString* source, CCSTDLIB_Index beg, CCSTDLIB_Index end);
+
+// split C String
+CCSTDLIB_EXPORT const char**		SplitCString(const CCSTDLIB_CString* source, CCSTDLIB_CString* spliter);
 #endif
